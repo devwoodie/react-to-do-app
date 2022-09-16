@@ -4,7 +4,7 @@ import Form from "./component/Form";
 import {useState} from "react";
 
 export default function App(){
-
+    console.log('App Component');
     let [todoData, setTodoData] = useState([]);
     let [value, setValue] = useState("");
 

@@ -1,21 +1,11 @@
+import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import List from "./List";
 
-export default function Lists({ todoData, setTodoData }){
+const Lists = React.memo(({ todoData, setTodoData }) => {
 
-    const handleClick = (id) => {
-        let newTodoData = todoData.filter(data => data.id !== id)
-        setTodoData(newTodoData)
-    }
-    const handleCompleteChange = (id) => {
-        let newTodoData = todoData.map(data => {
-            if (data.id === id) {
-                data.completed = !data.completed;
-            }
-            return data;
-        })
-        setTodoData(newTodoData);
-    }
+    console.log('Lists Component');
+
     const handelEnd = (result) => {
         if(!result.destination) return;
 
@@ -51,13 +41,15 @@ export default function Lists({ todoData, setTodoData }){
                                         />
                                     )}
                                 </Draggable>
-                                ))}
+                            ))}
                             {provided.placeholder}
                         </div>
-                        )}
+                    )}
                 </Droppable>
 
             </DragDropContext>
         </div>
     )
-}
+})
+
+export default Lists;

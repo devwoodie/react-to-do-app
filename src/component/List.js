@@ -1,9 +1,16 @@
-import {Draggable} from "react-beautiful-dnd";
+import React from "react";
 
-export default function List({
-    id, title, completed, todoData, setTodoData, provided, snapshot
-                             }){
+const List = React.memo( ({
+                id,
+                title,
+                completed,
+                todoData,
+                setTodoData,
+                provided,
+                snapshot
+}) => {
 
+    console.log('List Component');
     const handleClick = (id) => {
         let newTodoData = todoData.filter(data => data.id !== id)
         setTodoData(newTodoData)
@@ -36,4 +43,6 @@ export default function List({
             </div>
         </div>
     )
-}
+});
+
+export default List;
