@@ -30,20 +30,20 @@ const List = React.memo( ({
 
     const handleEditChange = (e) => {
         setEditedTitle(e.target.value);
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         let newTodoData= todoData.map((data) => {
             if(data.id === id){
-                data.title = editedTitle
+                data.title = editedTitle;
             };
-            return data
+            return data;
         });
         setTodoData(newTodoData);
         localStorage.setItem('todoData', JSON.stringify(newTodoData));
         setIsEditing(false);
-    }
+    };
 
     if(isEditing){
         return (
@@ -70,8 +70,8 @@ const List = React.memo( ({
     }else{
         return(
             <div key={id} {...provided.draggableProps}
-                 ref={provided.innerRef} {...provided.dragHandleProps}
-                 className={`${snapshot.isDragging ? "bg-gray-400" : "bg-gray-100"} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600  border rounded`}
+                ref={provided.innerRef} {...provided.dragHandleProps}
+                className={`${snapshot.isDragging ? "bg-gray-400" : "bg-gray-100"} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600  border rounded`}
             >
                 <div>
                     <input
@@ -91,7 +91,7 @@ const List = React.memo( ({
                 </div>
             </div>
         )
-    }
+    };
 });
 
 export default List;
