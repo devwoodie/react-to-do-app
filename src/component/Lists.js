@@ -4,8 +4,6 @@ import List from "./List";
 
 const Lists = React.memo(({ todoData, setTodoData,handleClick }) => {
 
-    console.log('Lists Component');
-
     const handelEnd = (result) => {
         if(!result.destination) return;
 
@@ -13,6 +11,7 @@ const Lists = React.memo(({ todoData, setTodoData,handleClick }) => {
         const [reorderedItem] = newTodoData.splice(result.source.index, 1);
         newTodoData.splice(result.destination.index, 0 , reorderedItem);
         setTodoData(newTodoData);
+        localStorage.setItem('todoData', JSON.stringify(newTodoData));
     };
 
     return(

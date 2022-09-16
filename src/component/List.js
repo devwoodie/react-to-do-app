@@ -1,4 +1,7 @@
 import React, {useState} from "react";
+import { AiOutlineDelete  } from "react-icons/ai"
+import { MdOutlineAutoFixNormal, MdAssignmentTurnedIn  } from "react-icons/md"
+
 
 const List = React.memo( ({
                 id,
@@ -22,6 +25,7 @@ const List = React.memo( ({
             return data;
         })
         setTodoData(newTodoData);
+        localStorage.setItem('todoData', JSON.stringify(newTodoData));
     };
 
     const handleEditChange = (e) => {
@@ -37,6 +41,7 @@ const List = React.memo( ({
             return data
         });
         setTodoData(newTodoData);
+        localStorage.setItem('todoData', JSON.stringify(newTodoData));
         setIsEditing(false);
     }
 
@@ -53,8 +58,12 @@ const List = React.memo( ({
                     </form>
                 </div>
                 <div className="items-center">
-                    <button className="px-4" type="submit" onClick={handleSubmit}>save</button>
-                    <button className="px-4" onClick={() => {setIsEditing(false)}}>X</button>
+                    <button className="px-4" type="submit" onClick={handleSubmit}>
+                        <MdAssignmentTurnedIn />
+                    </button>
+                    <button className="px-4" onClick={() => {setIsEditing(false)}}>
+                        <AiOutlineDelete />
+                    </button>
                 </div>
             </div>
         )
@@ -73,8 +82,12 @@ const List = React.memo( ({
                     <span className={completed ? "line-through" : "ml-5"} >{title}</span>
                 </div>
                 <div className="items-center">
-                    <button className="px-4" onClick={() => {setIsEditing(true)}}>edit</button>
-                    <button className="px-4" onClick={() => {handleClick(id)}}>X</button>
+                    <button className="px-4" onClick={() => {setIsEditing(true)}}>
+                        <MdOutlineAutoFixNormal />
+                    </button>
+                    <button className="px-4" onClick={() => {handleClick(id)}}>
+                        <AiOutlineDelete />
+                    </button>
                 </div>
             </div>
         )
